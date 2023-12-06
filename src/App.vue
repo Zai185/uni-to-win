@@ -1,9 +1,11 @@
 <template>
-  <div class="flex">
-    <textarea placeholder="Uni to Win" v-model="text"></textarea>
-    <textarea ref="textBox" readonly v-model="textMod"></textarea>
+  <div>
+    <button @click="copyToClipboard">Copy The Win</button>
+    <div class="flex">
+      <textarea placeholder="Enter Your Unicode Here" v-model="text"></textarea>
+      <textarea ref="textBox" readonly v-model="textMod"></textarea>
+    </div>
   </div>
-  <button @click="copyToClipboard">Copy</button>
 </template>
 
 <script setup>
