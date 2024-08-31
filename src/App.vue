@@ -1,20 +1,40 @@
 <template>
   <div>
-    <button @click="copyToClipboard">Copy The Win</button>
-    <div class="flex">
-      <textarea placeholder="Enter Your Unicode Here" v-model="text"></textarea>
-      <textarea ref="textBox" readonly v-model="textMod"></textarea>
+    <div class="my-4 flex justify-center items-center gap-4">
+      <button class="border hover:bg-white hover:text-black transition py-2 px-4" @click="copyToClipboard">Copy The
+        Win</button>
+      <button class="border hover:bg-white hover:text-black transition py-2 px-4" @click="deleteText">Clear All</button>
+    </div>
+
+    <div class="flex items-center justify-center gap-2 md:gap-8 flex-col md:flex-row px-4">
+      <textarea class="border h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
+        placeholder="Enter Your Win Here" v-model="text"></textarea>
+      <textarea
+        class="font-[wininnwa] border h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
+        placeholder="uc*XipZn" ref="textBox" readonly v-model="textMod"></textarea>
     </div>
   </div>
 </template>
 
 <script setup>
 
-import { ref, computed } from 'vue'
-const text = ref('')
+import { ref, computed, onMounted } from 'vue'
+
+const text = ref('ကခဂဃအဈည')
 const textBox = ref(null)
+const consonents = [
+  "u", "c", "*", "C", "i",
+  "p", "q", "Z", "ps", "O", "n",
+  "#", "X", "!", "¡", "P",
+  "w", "x", "'", '"', "e",
+  "y", "z", "A", "b", "r",
+  ",", "&", "v", "0", "o",
+  "[", "V", "t",]
+//! from 4096 to 4129
+
 const textMod = computed(() => {
-  return text.value
+  let unicodeText = tlsConvert(text.value)
+  return unicodeText
     .replaceAll('ßS', 'Q')
     .replaceAll('ßG', 'R')
     .replaceAll('ßT', 'W')
@@ -87,27 +107,27 @@ const textMod = computed(() => {
     .replaceAll('û0', 'j0K')//Hend
     .replaceAll('ûy', 'jyK')//Hend
 })
+
+
 function copyToClipboard() {
   textBox.value.select()
   textBox.value.setSelectionRange(0, text.value.length + 1)
   navigator.clipboard.writeText(text.value)
 }
 
-</script>
-<style scoped>
-.flex {
-  display: flex;
-  align-items: center;
+function deleteText() {
+  text.value = ""
 }
 
-textarea {
-  margin: 0 24px;
-  width: min(500px, 40vw);
-  height: 80vh;
-  border: 1px solid black;
-  overflow-y: scroll;
-  padding: 5px;
-  text-align: left;
-  word-wrap: break-word;
+onMounted(() => {
+
+})
+
+</script>
+
+<style scoped>
+@font-face {
+  font-family: wininnwa;
+  src: url(./assets/WININNWA.TTF);
 }
 </style>
