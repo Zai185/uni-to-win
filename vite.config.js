@@ -3,6 +3,5 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/uni-to-win/',
   plugins: [vue()],
 })
