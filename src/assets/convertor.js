@@ -771,7 +771,6 @@ TlsMyanmarConverter.prototype.tlsConvert = function(unicodeText, sourceEncoding 
     if (sourceEncoding == "unicode") {  
         
         var converter = tlsMyanmarConverters[targetEncoding];
-        console.log(tlsMyanmarConverters)
         winText = converter.convertFromUnicode(unicodeText);
     }
     else {

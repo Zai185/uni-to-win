@@ -768,7 +768,6 @@ function tlsConvert(unicodeText) {
     targetEncoding = 'wininnwa'
 
     var converter = tlsMyanmarConverters[targetEncoding];
-    console.log('conv', converter)
     text = converter.convertFromUnicode(unicodeText);
     return text
 }

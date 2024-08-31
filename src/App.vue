@@ -10,26 +10,20 @@
       <textarea class="border h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
         placeholder="Enter Your Win Here" v-model="text"></textarea>
       <textarea
-        class="font-[wininnwa] border text-xl h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
+        class="font-[wininnwa] border text-xl h-[30vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
         placeholder="aumfyDul;&ef" ref="textBox" readonly v-model="textMod"></textarea>
     </div>
   </div>
+
+  <DevFooter class="fixed bottom-2 w-full" />
+
 </template>
 <script setup>
 
 import { ref, computed, onMounted } from 'vue'
-
+import DevFooter from './components/DevFooter.vue';
 const text = ref('')
 const textBox = ref(null)
-const consonents = [
-  "u", "c", "*", "C", "i",
-  "p", "q", "Z", "ps", "O", "n",
-  "#", "X", "!", "¡", "P",
-  "w", "x", "'", '"', "e",
-  "y", "z", "A", "b", "r",
-  ",", "&", "v", "0", "o",
-  "[", "V", "t",]
-//! from 4096 to 4129
 
 const textMod = computed(() => {
   let unicodeText = tlsConvert(text.value)
@@ -106,7 +100,6 @@ const textMod = computed(() => {
     .replaceAll('û0', 'j0K')//Hend
     .replaceAll('ûy', 'jyK')//Hend
 })
-
 
 function copyToClipboard() {
   textBox.value.select()
