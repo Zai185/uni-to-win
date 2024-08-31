@@ -10,8 +10,8 @@
       <textarea class="border h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
         placeholder="Enter Your Win Here" v-model="text"></textarea>
       <textarea
-        class="font-[wininnwa] border h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
-        placeholder="uc*XipZn" ref="textBox" readonly v-model="textMod"></textarea>
+        class="font-[wininnwa] border text-xl h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
+        placeholder="aumfyDul;&ef" ref="textBox" readonly v-model="textMod"></textarea>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@
 
 import { ref, computed, onMounted } from 'vue'
 
-const text = ref('ကခဂဃအဈည')
+const text = ref('')
 const textBox = ref(null)
 const consonents = [
   "u", "c", "*", "C", "i",
