@@ -104,7 +104,7 @@ const textMod = computed(() => {
 function copyToClipboard() {
   textBox.value.select()
   textBox.value.setSelectionRange(0, text.value.length + 1)
-  navigator.clipboard.writeText(text.value)
+  navigator.clipboard.writeText(textMod.value)
 }
 
 function deleteText() {
