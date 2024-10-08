@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="my-4 flex justify-center items-center gap-4">
-      <button class="border hover:bg-white hover:text-black transition py-2 px-4" @click="copyToClipboard">Copy The
+      <button class="border hover:bg-white hover:text-black transition py-2 px-4"
+        @click="async () => await copyToClipboard()">Copy The
         Win</button>
       <button class="border hover:bg-white hover:text-black transition py-2 px-4" @click="deleteText">Clear All</button>
     </div>
@@ -18,15 +19,17 @@
   <DevFooter class="fixed bottom-2 w-full" />
 
 </template>
-<script setup>
+<script setup lang="ts">
 
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, Ref } from 'vue'
 import DevFooter from './components/DevFooter.vue';
-const text = ref('')
-const textBox = ref(null)
+import { TlsMyanmarConverter } from './assets/tlsMyanmarConverter';
+import { tlsMyanmarConverterData } from './assets/tlsMyanmarConverterData';
+const text: Ref<string> = ref('')
+const textBox: Ref<HTMLTextAreaElement | null> = ref(null)
 
 const textMod = computed(() => {
-  let unicodeText = tlsConvert(text.value)
+  let unicodeText = new TlsMyanmarConverter(tlsMyanmarConverterData["wwin_burmese1"]).tlsConvert(text.value)
   return unicodeText
     .replaceAll('ßS', 'Q')
     .replaceAll('ßG', 'R')
@@ -101,19 +104,16 @@ const textMod = computed(() => {
     .replaceAll('ûy', 'jyK')//Hend
 })
 
-function copyToClipboard() {
+async function copyToClipboard() {
   textBox.value.select()
   textBox.value.setSelectionRange(0, text.value.length + 1)
-  navigator.clipboard.writeText(textMod.value)
+  await navigator.clipboard.writeText(textBox.value)
 }
 
 function deleteText() {
   text.value = ""
 }
 
-onMounted(() => {
-
-})
 
 </script>
 
