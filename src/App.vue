@@ -11,7 +11,7 @@
       <textarea class="border h-[40vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
         placeholder="Enter Your Win Here" v-model="text"></textarea>
       <textarea
-        class="font-[wininnwa] border text-xl h-[30vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
+        class="border text-xl h-[30vh] md:h-[80vh] resize-none w-full md:w-[40%] bg-transparent text-white p-4"
         placeholder="aumfyDul;&ef" ref="textBox" readonly v-model="textMod"></textarea>
     </div>
   </div>
